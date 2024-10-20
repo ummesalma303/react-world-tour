@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import './Country.css'
-function Country({ country,markAsVisited }) {
-    const [visit,setVisited] = useState(false);
+import CountryDetails from '../CountryDetails/CountryDetails';
+function Country({ country,markAsVisited,handleVisitedFlags}) {
+   const [visited,setVisited]=useState(false)
     const { name, flags, languages, population, area } = country;
-
     const handleVisited = () => {
-        setVisited(!visit)
-    }
+    setVisited(!visited)
+}
 
-    // function markAsVisited() {
-    //     // console.log(89);
-    // }
     return (
-        <div className={`country ${visit&&'visited'}`}>
+        <div className={`country ${visited&& 'visited'}`}>
             <img src={flags.png} alt="" />
-            <h3 style={{color: visit?'yellow':'white'}}>Name: {name.common}</h3>
-            <p>Languages: {languages?.eng?languages.eng:'N/A'}</p> 
-            <p>population: {population}</p>
-            <p>Area: {area}</p>
-            <button onClick={handleVisited}>{visit?'Visited':'Going' }</button>
-            {visit ? ' I have visited this country' : ' I want to visit'}; <br />
-            <button onClick={()=>markAsVisited(country)}>Mark as visited</button>
+            <h3>Name: {name.common}</h3>
+            <p>Language: { languages?.eng?languages.eng:'N/A'}</p>
+            <p>{ population}</p>
+            <p>{area}</p>
+            <button onClick={()=>markAsVisited(country)}>Mak As Show</button>
+            <button onClick={()=> handleVisitedFlags(flags)}>Visited Flags</button>
+            <button onClick={handleVisited}>{ visited?'Visited':'Going'}</button> <br />
+            {visited ? 'I have visited this country.' : 'I want to visit.'} 
+            <hr />
+            <div>
+            <CountryDetails country={country} markAsVisited={markAsVisited} handleVisitedFlags={handleVisitedFlags}></CountryDetails>
+            </div>
         </div>
     );
 }
 
 export default Country;
+

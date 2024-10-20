@@ -1,10 +1,10 @@
 .country{
-    border: 2px solid rgb(138, 16, 16);
+    border: 2px solid rgb(9, 88, 141);
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
     /* color: black; */
 }
 .visited{
-    background-color: #ffffff23;
+    background-color: rgba(241, 238, 234, 0.144);
 }
